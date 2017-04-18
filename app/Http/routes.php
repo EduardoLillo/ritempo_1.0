@@ -22,3 +22,4 @@ Route::get('categoria/edit','CategoriaController@edit');
 Route::get('categoria/update','CategoriaController@update');
 Route::get('categoria/destroy','CategoriaController@destroy');
 
+

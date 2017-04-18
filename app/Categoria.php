@@ -13,5 +13,5 @@ class Categoria extends Model
     protected $timestamps=false;
 
     protected $fillable=['nombre'];
-    protected $guarded=¨[];
+    protected $guarded=[];
 }
