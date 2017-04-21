@@ -10,8 +10,12 @@ class Categoria extends Model
 
     protected $primaryKey='id_categoria';
 
-    protected $timestamps=false;
+    public $timestamps=false;
 
-    protected $fillable=['nombre'];
-    protected $guarded=[];
+    protected $fillable=['nombre','descripcion'];
+    public function subcategorias()
+    {
+    	return $this -> hasMany('App\Subcategoria');
+    }
+    
 }

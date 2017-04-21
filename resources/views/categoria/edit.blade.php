@@ -1,8 +1,8 @@
 @extends ('plantilla.admin')
-@section('contenido')
-<div class="row">
+@section ('contenido')
+	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nueva Categoría</h3>
+			<h3>Editar Categoría: {{ $categoria->nombre}}</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -13,15 +13,15 @@
 			</div>
 			@endif
 
-			{!!Form::open(array('url'=>'categoria','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::model($categoria,['method'=>'PATCH','route'=>['categoria.update',$categoria->id_categoria]])!!}
             {{Form::token()}}
             <div class="form-group">
             	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombre" class="form-control" placeholder="Nombre...">
+            	<input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" placeholder="Nombre...">
             </div>
-            <div class="form-group">
+           <div class="form-group">
             	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">
+            	<input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" placeholder="Descripción...">
             </div>
             <div class="form-group">
             	<button class="btn btn-primary" type="submit">Guardar</button>
@@ -32,4 +32,4 @@
             
 		</div>
 	</div>
-	@endsection
+@endsection
