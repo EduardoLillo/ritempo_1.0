@@ -19,6 +19,6 @@ class Subcategoria extends Model
     {
     	 return $this-> belongsTo('App\categoria');	
     }
-
+    
 
     }

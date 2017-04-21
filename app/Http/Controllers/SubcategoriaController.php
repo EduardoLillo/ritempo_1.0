@@ -9,6 +9,12 @@ use App\Subcategoria;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\SubcategoriaFormRequest;
 use DB;
+use App\Categoria;
+use App\Http\Requests\CategoriaFormRequest;
+use App\Http\Controller\CategoriaControler;
+
+
+
 
 class SubcategoriaController extends Controller
 {
@@ -22,14 +28,19 @@ class SubcategoriaController extends Controller
         {
             $query=trim($request->get('searchText'));
             $subcategorias=DB::table('subcategorias')->where('nombre','LIKE','%'.$query.'%')
-             ->orderBy('id_subcategoria','desc')
+            ->orderBy('id_subcategoria','desc')
             ->paginate(5);
-            return view('subcategoria.index',["subcategorias"=>$subcategorias,"searchText"=>$query]);
+            //prueba listbox
+            
+            return view('subcategoria.index',["subcategorias"=>$subcategorias,"searchText"=>$query,]);
         }
     }
     public function create()
     {
-        return view("subcategoria.create");
+        
+    $categorias =Categoria::all();
+        return view("subcategoria.create",compact('categorias'));
+        //return view('subcategoria.create',compact('categorias'));
     }
     public function store (SubcategoriaFormRequest $request)
     {

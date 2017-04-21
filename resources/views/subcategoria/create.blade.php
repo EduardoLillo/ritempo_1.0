@@ -24,6 +24,14 @@
             	<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">
             </div>
             <div class="form-group">
+            <h2>Categoria a la que pertenece</h2>
+            <select class="form-control">
+                @foreach($categorias as $cat)
+                <option name=categoria id="categoria" value="{{$cat->id_categoria}}">{{$cat->id_categoria}}</option>
+                @endforeach
+            </select>
+        </div>
+            <div class="form-group">
             	<button class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>

@@ -23,7 +23,7 @@ class CategoriaController extends Controller
         {
             $query=trim($request->get('searchText'));
             $categorias=DB::table('categorias')->where('nombre','LIKE','%'.$query.'%')
-             ->orderBy('id_categoria','desc')
+            ->orderBy('id_categoria','desc')
             ->paginate(5);
             return view('categoria.index',["categorias"=>$categorias,"searchText"=>$query]);
         }
@@ -68,7 +68,9 @@ class CategoriaController extends Controller
     }
 
 
-
+    //prueba listbox para 
+    public function listbox()
+    {} 
 
 
 }
