@@ -38,17 +38,21 @@ class SubcategoriaController extends Controller
     public function create()
     {
         
-    $categorias =Categoria::all();
-        return view("subcategoria.create",compact('categorias'));
+        $data['categoria'] = Categoria::lists('nombre', 'id_categoria');
+
+   // $categorias =Categoria::all('id_categoria','nombre');
+        return view("subcategoria.create",$data);
         //return view('subcategoria.create',compact('categorias'));
     }
     public function store (SubcategoriaFormRequest $request)
     {
         $subcategoria=new Subcategoria;
+         //$subcategoria->id_categoria=Input::get('do');
+        //$subcategoria->id_categoria=$id;
         $subcategoria->nombre=$request->get('nombre');
         $subcategoria->descripcion=$request->get('descripcion');
-        $subcategoria->categoria=$request->get('categoria');
-
+        $subcategoria->id_categoria=$request->get('categoria');
+        
         $subcategoria->save();
         return Redirect::to('subcategoria');
 

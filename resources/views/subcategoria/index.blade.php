@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de SubCategorías <a href="subcategoria/create"><button class="btn btn-success">Nuevo</button></a></h3>
+		<h3>Listado de SubCategorías <a href="/subcategoria/create"><button class="btn btn-success">Nuevo</button></a></h3>
 		@include('subcategoria.search')
 	</div>
 </div>
@@ -20,7 +20,7 @@
 				<tr>
 					<td>{{ $subcat->id_subcategoria}}</td>
 					<td>{{ $subcat->nombre}}</td>
-					<td>{{ $subcat->categoria_id_categoria}}</td>
+					<td>{{ $subcat->id_categoria}}</td>
 					<td>
 						<a href="{{URL::action('SubcategoriaController@edit',$subcat->id_subcategoria)}}"><button class="btn btn-info">Editar</button></a>
                          <a href="" data-target="#modal-delete-{{$subcat->id_subcategoria}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>

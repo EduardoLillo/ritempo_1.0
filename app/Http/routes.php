@@ -19,6 +19,7 @@ Route::get('categoria/destroy','CategoriaController@destroy');
 Route::get('categoria/create','CategoriaController');
 Route::resource('subcategoria/create','CategoriaController');
 Route::get('subcategoria.create', ['as' => 'create', 'uses' => 'SubcategoriaController@create']);
+Route::get('subcategoria.create','SubcategoriaController@create');
 */
 
 Route::get('/', function () {
@@ -26,5 +27,5 @@ Route::get('/', function () {
 });
 Route::resource('categoria','CategoriaController');
 Route::resource('subcategoria','SubcategoriaController');
-Route::get('subcategoria.create','SubcategoriaController@create');
+
 
