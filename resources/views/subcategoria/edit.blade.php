@@ -24,6 +24,14 @@
             	<input type="text" name="descripcion" class="form-control" value="{{$subcategoria->descripcion}}" placeholder="Descripción...">
             </div>
             <div class="form-group">
+            
+            {!! Form::label('id_categoria', 'Seleccion una Categoria   :') !!}		
+			{!! Form::select('categoria',$categoria,null,['class'=>'select2-container form-control select2','placeholder'=>'Seleccione Nombre de Categoria','required']) !!}
+            </div>
+            
+
+
+            <div class="form-group">
             	<button class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>

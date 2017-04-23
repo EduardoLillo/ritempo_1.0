@@ -26,14 +26,16 @@
             <div class="form-group">
            <!-- <label for="categoria">Categoria a la que pertenece  :</label>-->
 
-            {!! Form::label('id_categoria', 'Seleccion una Categoria   :') !!}
-			{!! Form::select('categoria',$categoria) !!}
+			{!! Form::label('id_categoria', 'Seleccion una Categoria   :') !!}
+		
+			{!! Form::select('categoria',$categoria,null,['class'=>'select2-container form-control select2','placeholder'=>'Seleccione Nombre de Categoria','required']) !!}
 
-        	</div>
-			  
+        	</div>        				  
             <div class="form-group">
             	<button   class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
+            	</div>
+            	
             </div>
 
 			{!!Form::close()!!}		

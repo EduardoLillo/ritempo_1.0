@@ -61,16 +61,19 @@ class SubcategoriaController extends Controller
     {
         return view("subcategoria.show",["subcategoria"=>subcategoria::findOrFail($id)]);
     }
-    public function edit($id)
+    public function edit($id)    
     {
-        return view("subcategoria.edit",["subcategoria"=>subcategoria::findOrFail($id)]);
+        $data['categoria'] = Categoria::lists('nombre', 'id_categoria');
+        return view("subcategoria.edit",["subcategoria"=>subcategoria::findOrFail($id)],$data);
     }
     public function update(SubCategoriaFormRequest $request,$id)
     {
+
         $subcategoria=subcategoria::findOrFail($id);
         $subcategoria->nombre=$request->get('nombre');
         $subcategoria->descripcion=$request->get('descripcion');
-        $subcategoria->categoria=$request->get('categoria');
+       $subcategoria->id_categoria=$request->get('categoria');
+       // $subcategoria->categoria=$request->get('categoria');
         $subcategoria->update();
         return Redirect::to('subcategoria');
     }
