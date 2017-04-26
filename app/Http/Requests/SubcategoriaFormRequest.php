@@ -23,7 +23,7 @@ class SubcategoriaFormRequest extends Request
      */
     public function rules()
     {
-        return ['nombre'=>'required|max:50',
+        return ['nombre'=>'required|unique:subcategorias',
         'descripcion'=>'required|max:256',
        'id_categoria'=>''];
 

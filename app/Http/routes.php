@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('categoria','CategoriaController');
+
 Route::resource('subcategoria','SubcategoriaController');
 
+Route::resource('producto','ProductoController');
+
+Route::resource('imagen','ImagenController');
 

@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
+
+
 class ProductoFormRequest extends Request
 {
     /**
@@ -13,7 +15,7 @@ class ProductoFormRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +23,13 @@ class ProductoFormRequest extends Request
      *
      * @return array
      */
-    public function rules()
+   public function rules()
     {
-        return [
-            //
-        ];
-    }
+        return ['nombre'=>'required|unique:productos',
+        'descripcion'=>'required|max:256',
+       'marca'=>'required|max:20',
+       'id_subcategoria'=>''];
+
+
+}
 }

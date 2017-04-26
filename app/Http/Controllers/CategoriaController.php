@@ -60,17 +60,21 @@ class CategoriaController extends Controller
     }
     public function destroy($id)
     {
-        $categoria=Categoria::findOrFail($id);
+        try {
+
+          $categoria=Categoria::findOrFail($id);
         /*$categoria->condicion='0';*/
-       	  $categoria->delete();
+          $categoria->delete();
 
         return Redirect::to('categoria');
+            
+        } catch (\Illuminate\Database\QueryException $e ) {
+            return Redirect::to('categoria')
+        ->with('message','No puede eliminar la categoria,por que tiene subcategorias asociadas');
+            
+        }
+
     }
-
-
-    //prueba listbox para 
-    public function listbox()
-    {} 
 
 
 }

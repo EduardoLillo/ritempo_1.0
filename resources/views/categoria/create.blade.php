@@ -16,18 +16,27 @@
 			{!!Form::open(array('url'=>'categoria','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
             <div class="form-group">
-            	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombre" class="form-control" placeholder="Nombre...">
+            	<label for="nombre" class="col-sm-2 control-label">Nombre :</label>
+                <div class="col-sm-10">
+				<input type="text" name="nombre" class="form-control" placeholder="Nombre...">
+				</div>
+            	
             </div>
+            <br><hr>
             <div class="form-group">
-            	<label for="descripcion">Descripción</label>
+            	<label for="descripcion" class="col-sm-2 control-label">Descripción:</label>
+            	<div class="col-sm-10">
             	<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">
+            	</div>
             </div>
+            <br><hr>
             <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
             	<button class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
-
+            	
+            </div>
 			{!!Form::close()!!}		
             
 		</div>

@@ -87,26 +87,26 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Categoria/Productos</span>
+                <span>Categoria/Subcategoria</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="/categoria"><i class="fa fa-circle-o"></i>Categorías </a></li>
-                <li><a href="/subcategoria"><i class="fa fa-circle-o"></i> Subcategoria</a></li>
+                <li><a href="/subcategoria"><i class="fa fa-circle-o"></i> Subcategorias</a></li>
               </ul>
             </li>
-            <!--
-            <li class="treeview">
+                        <li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
-                <span>usuarios</span>
+                <span>Producto</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="compras/ingreso"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="/producto"><i class="fa fa-circle-o"></i> Productos</a></li>
               </ul>
             </li>
+            <!--
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-shopping-cart"></i>

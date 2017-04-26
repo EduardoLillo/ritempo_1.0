@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CategoriaFormRequest extends Request
+class ImagenFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CategoriaFormRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,7 +23,8 @@ class CategoriaFormRequest extends Request
      */
     public function rules()
     {
-        return ['nombre'=>'required|max:50|unique:categorias',
-        'descripcion'=>'max:256'];
+        return [
+            //
+        ];
     }
 }
