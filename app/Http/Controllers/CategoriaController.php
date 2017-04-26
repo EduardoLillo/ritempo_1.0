@@ -69,6 +69,8 @@ class CategoriaController extends Controller
         return Redirect::to('categoria');
             
         } catch (\Illuminate\Database\QueryException $e ) {
+            
+            //return 'No puede eliminar la categoria,por que tiene subcategorias asociadas';
             return Redirect::to('categoria')
         ->with('message','No puede eliminar la categoria,por que tiene subcategorias asociadas');
             

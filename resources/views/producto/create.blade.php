@@ -13,7 +13,7 @@
 			</div>
 			@endif
 
-			{!!Form::open(array('url'=>'producto','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('url'=>'producto','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
             {{Form::token()}}
             <div class="form-group">
             	<label for="nombre">Nombre</label>
@@ -33,9 +33,28 @@
 
 			{!! Form::label('id_subcategoria', 'Seleccione una Subcategoria   :') !!}
 		
-			{!! Form::select('subcategoria',$subcategoria,null,['class'=>'select2-container form-control select2','placeholder'=>'Seleccione Nombre de la subcategoria','required']) !!}
+			{!! Form::select('subcategoria',$subcategoria,null,['class'=>'select2-container form-control select2','placeholder'=>'Seleccione Nombre de la subcategoria','required']) !!}                
 
-        	</div>        				  
+        	</div>     
+
+           <!-- <div class="form-group">
+
+                <label for="">Imagenes del Producto</label>
+
+                {!! Form::file('imagen') !!}
+
+
+            </div>-->
+
+            <div class="form-group">
+
+                <label for="">Varias Imagenes</label>
+
+                {!! Form::file('imagen[]',array('multiple'=>true)) !!}
+
+
+            </div>
+   				  
             <div class="form-group">
             	<button   class="btn btn-primary" type="submit">Guardar</button>
             	<button class="btn btn-danger" type="reset">Cancelar</button>

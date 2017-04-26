@@ -72,18 +72,27 @@ class SubcategoriaController extends Controller
         $subcategoria=subcategoria::findOrFail($id);
         $subcategoria->nombre=$request->get('nombre');
         $subcategoria->descripcion=$request->get('descripcion');
-       $subcategoria->id_categoria=$request->get('categoria');
+        $subcategoria->id_categoria=$request->get('categoria');
 
        // $subcategoria->categoria=$request->get('categoria');
-        $subcategoria->update();
-        return Redirect::to('subcategoria');
+         $subcategoria->update();
+         return Redirect::to('subcategoria');
     }
     public function destroy($id)
     {
-        $subcategoria=subcategoria::findOrFail($id);
-        /*$categoria->condicion='0';*/
-       	  $subcategoria->delete ;
+        try {
 
-        return Redirect::to('subcategoria')->with('message','Subcategoria eliminada');
+          $subcategoria=subcategoria::findOrFail($id);
+        /*$categoria->condicion='0';*/
+          $subcategoria->delete() ;
+
+        return Redirect::to('subcategoria')->with('message','Subcategoria eliminada'); 
+
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            return Redirect::to('subcategoria')->with('message','Subcategoria no se puede eliminada');
+        }
+
+        
     }
 }

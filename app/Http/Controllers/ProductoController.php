@@ -1,16 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use App\Http\Requests\ProductoFormRequest;
+use Storage;
 use DB;
+use App\Http\Requests\ProductoFormRequest;
+use App\Http\Requests\SubCategoriaFormRequest;
 use App\Producto;
 use App\Subcategoria;
-use App\Http\Requests\SubCategoriaFormRequest;
+use App\Imagen;
+
 use App\Http\Controller\SubcategoriaController;
 
 class ProductoController extends Controller
@@ -40,6 +42,39 @@ class ProductoController extends Controller
 
     public function store (ProductoFormRequest $request)
     {
+ 
+        $file = Input::file('imagen');
+        $producto = new Producto($request->all());
+       
+        $producto->nombre=$request->get('nombre');
+        $producto->descripcion=$request->get('descripcion');
+        $producto->marca=$request->get('marca');
+        $producto->id_subcategoria=$request->get('subcategoria');
+        $producto->save();
+
+          
+        if ($request->file('imagen')){            
+                 foreach ($file as $value) {
+              
+                  $nombre_img = $value->getClientOriginalName();
+                  
+                  $ruta = public_path().'\productos';
+                  $destinacion = 'productos';
+                  //$filename = 'PRO_' . time() . '.' . $value->getClientOriginalName();
+                  $filename = 'PRO_'. str_random(4) . '_' .$nombre_img;
+                  $upload = $value->move($destinacion, $filename);
+
+                  $imagen=new Imagen();
+                  $imagen->nombre=$filename;
+                  $imagen->ruta=$ruta;
+                  
+                  $imagen->save();
+                  $producto->imagenes()->attach($imagen);
+             }
+
+        }
+
+
         return Redirect::to('producto');
 
     }
@@ -69,7 +104,10 @@ class ProductoController extends Controller
         try {
 
           $producto=Producto::findOrFail($id);
+         // $producto->imagenes()->detach();
+
         /*$categoria->condicion='0';*/
+          $producto->imagenes()->detach();
           $producto->delete();
 
         return Redirect::to('producto');
