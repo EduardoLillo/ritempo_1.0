@@ -11,7 +11,7 @@ role="dialog" tabindex="-1" id="modal-delete-{{$cat->id_categoria}}">
                 <h4 class="modal-title">Eliminar Categoría</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirme si desea Eliminar la categoría</p>
+				<p>Confirme  si desea Eliminar la categoría  </p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

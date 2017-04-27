@@ -56,14 +56,12 @@ class ProductoController extends Controller
         if ($request->file('imagen')){            
                  foreach ($file as $value) {
               
-                  $nombre_img = $value->getClientOriginalName();
-                  
+                  $nombre_img = $value->getClientOriginalName();                 
                   $ruta = public_path().'\productos';
                   $destinacion = 'productos';
-                  //$filename = 'PRO_' . time() . '.' . $value->getClientOriginalName();
-                  $filename = 'PRO_'. str_random(4) . '_' .$nombre_img;
+                  $filename = 'PRO_' . time() . '.' . $nombre_img;
+                  //$filename = 'PRO_'. str_random(4) . '_' .$nombre_img;
                   $upload = $value->move($destinacion, $filename);
-
                   $imagen=new Imagen();
                   $imagen->nombre=$filename;
                   $imagen->ruta=$ruta;

@@ -63,16 +63,15 @@ class CategoriaController extends Controller
         try {
 
           $categoria=Categoria::findOrFail($id);
-        /*$categoria->condicion='0';*/
+          /*$categoria->condicion='0';*/
           $categoria->delete();
-
         return Redirect::to('categoria');
             
         } catch (\Illuminate\Database\QueryException $e ) {
             
             //return 'No puede eliminar la categoria,por que tiene subcategorias asociadas';
             return Redirect::to('categoria')
-        ->with('message','No puede eliminar la categoria,por que tiene subcategorias asociadas');
+        ->with('message','');
             
         }
 
