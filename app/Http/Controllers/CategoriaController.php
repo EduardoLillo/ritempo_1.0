@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Categoria;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\CategoriaFormRequest;
+use App\Http\Requests\CategoriaEditFormRequest;
 use DB;
 
 
@@ -15,7 +16,7 @@ class CategoriaController extends Controller
 {
     public function __construct()
     {
-
+             $this->middleware('auth');
     }
     public function index(Request $request)
     {
@@ -50,7 +51,7 @@ class CategoriaController extends Controller
     {
         return view("categoria.edit",["categoria"=>Categoria::findOrFail($id)]);
     }
-    public function update(CategoriaFormRequest $request,$id)
+    public function update(CategoriaEditFormRequest $request,$id)
     {
         $categoria=Categoria::findOrFail($id);
         $categoria->nombre=$request->get('nombre');

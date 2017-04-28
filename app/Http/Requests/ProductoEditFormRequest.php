@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class SubcategoriaFormRequest extends Request
+class ProductoEditFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,9 @@ class SubcategoriaFormRequest extends Request
      */
     public function rules()
     {
-        return ['nombre'=>'required|unique:subcategorias',
+     return ['nombre'=>'required|max:50',
         'descripcion'=>'required|max:256',
-       'id_categoria'=>''];
-
+       'marca'=>'required|max:20',
+       'id_subcategoria'=>''];
     }
 }

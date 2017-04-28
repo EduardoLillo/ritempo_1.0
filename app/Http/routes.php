@@ -20,11 +20,15 @@ Route::get('categoria/create','CategoriaController');
 Route::resource('subcategoria/create','CategoriaController');
 Route::get('subcategoria.create', ['as' => 'create', 'uses' => 'SubcategoriaController@create']);
 Route::get('subcategoria.create','SubcategoriaController@create');
-*/
+Route::get('/home','HomeController@index');
 
+
+*/
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
+Route::auth();
+
 Route::resource('categoria','CategoriaController');
 
 Route::resource('subcategoria','SubcategoriaController');
@@ -32,4 +36,5 @@ Route::resource('subcategoria','SubcategoriaController');
 Route::resource('producto','ProductoController');
 
 Route::resource('imagen','ImagenController');
+
 

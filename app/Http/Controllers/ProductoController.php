@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Storage;
 use DB;
 use App\Http\Requests\ProductoFormRequest;
+use App\Http\Requests\ProductoEditFormRequest;
 use App\Http\Requests\SubCategoriaFormRequest;
 use App\Producto;
 use App\Subcategoria;
@@ -19,7 +20,7 @@ class ProductoController extends Controller
 {
      public function __construct()
     {
-
+         $this->middleware('auth');
     }
 
     public function index(Request $request)
@@ -87,16 +88,46 @@ class ProductoController extends Controller
         return view("producto.edit",["producto"=>Producto::findOrFail($id)],$data);
     }
 
-    public function update(ProductoFormRequest $request,$id)
+    public function update(ProductoEditFormRequest $request ,$id)
     {
         $producto=Producto::findOrFail($id);
+        $file = Input::file('imagen');
+        $producto = new Producto();
+        //$producto = new Producto($request->all());        
         $producto->nombre=$request->get('nombre');
         $producto->descripcion=$request->get('descripcion');
         $producto->marca=$request->get('marca');
         $producto->id_subcategoria=$request->get('subcategoria');
         $producto->update();
+      
+        
+          
+        if ($request->file('imagen')){            
+                 foreach ($file as $value) {
+              
+                  $nombre_img = $value->getClientOriginalName();                 
+                  $ruta = public_path().'\productos';
+                  $destinacion = 'productos';
+                  $filename = 'PRO_' . time() . '.' . $nombre_img;
+                  //$filename = 'PRO_'. str_random(4) . '_' .$nombre_img;
+                  $upload = $value->move($destinacion, $filename);
+                  $imagen=new Imagen();
+                  $imagen->nombre=$filename;
+                  $imagen->ruta=$ruta;
+                  
+                  $imagen->update();
+                  $producto->imagenes()->attach($imagen);
+             }
+
+        }
+
+
         return Redirect::to('producto');
+
     }
+
+    
+
     public function destroy($id)
     {
         try {

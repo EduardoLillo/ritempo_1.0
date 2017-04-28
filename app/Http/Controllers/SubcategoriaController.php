@@ -11,6 +11,7 @@ use App\Http\Requests\SubcategoriaFormRequest;
 use DB;
 use App\Categoria;
 use App\Http\Requests\CategoriaFormRequest;
+use App\Http\Requests\SubcategoriaEditFormRequest;
 use App\Http\Controller\CategoriaController;
 
 
@@ -20,7 +21,7 @@ class SubcategoriaController extends Controller
 {
     public function __construct()
     {
-
+             $this->middleware('auth');
     }
     public function index(Request $request)
     {
@@ -66,7 +67,7 @@ class SubcategoriaController extends Controller
         $data['categoria'] = Categoria::lists('nombre', 'id_categoria');
         return view("subcategoria.edit",["subcategoria"=>subcategoria::findOrFail($id)],$data);
     }
-    public function update(SubCategoriaFormRequest $request,$id)
+    public function update(SubcategoriaEditFormRequest $request,$id)
     {
 
         $subcategoria=subcategoria::findOrFail($id);

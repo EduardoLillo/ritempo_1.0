@@ -44,18 +44,18 @@
               <!-- Messages: style can be found in dropdown.less-->
               
               <!-- User Account: style can be found in dropdown.less -->
+              
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Juan Carlos Arcila Díaz</span>
+                  <small class="fa fa-circle text-success"></small>
+                  <span class="hidden-xs">{{ Auth::user()->name }} </span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
-                  <li class="user-header">
-                    
+                  <li class="user-header">                   
                     <p>
-                      www.incanatoit.com - Desarrollando Software
-                      <small>www.youtube.com/jcarlosad7</small>
+                      www.ritempo.cl - Sistema Back-End
+                      <!--<small>www.youtube.com/jcarlosad7</small>-->
                     </p>
                   </li>
                   
@@ -63,7 +63,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="{{ url('/logout') }}" class="fa fa-btn fa-sign-out">Salir</a>
                     </div>
                   </li>
                 </ul>
