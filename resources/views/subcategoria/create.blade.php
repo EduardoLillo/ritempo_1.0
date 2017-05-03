@@ -21,7 +21,9 @@
             </div>
             <div class="form-group">
             	<label  for="descripcion">Descripción </label>
-            	<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">
+            	<textarea name="descripcion" maxlength="100" class="form-control" placeholder="Descripción..."></textarea>
+
+            	<!--<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">-->
             </div>
             <div class="form-group">
            <!-- <label for="categoria">Categoria a la que pertenece  :</label>-->

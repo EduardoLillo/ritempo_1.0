@@ -21,18 +21,20 @@
             </div>
            <div class="form-group">
             	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcion" class="form-control" value="{{$producto->descripcion}}" placeholder="Descripción...">
+            	<textarea  cols="10" rows="10" name="descripcion" maxlength="250" class="form-control field" value="{{$producto->descripcion}}" placeholder="Descripción..."></textarea>
+
+                 <!-- <input type="text" name="descripcion" class="form-control" value="{{$producto->descripcion}}" placeholder="Descripción...">-->
             </div>
 
             <div class="form-group">
             	<label  for="marca">Marca </label>
-            	<input type="text" name="marca" class="form-control" value="{{$producto->marca}}" placeholder="Marca...">
+            	<input type="text"  name="marca" class="form-control" value="{{$producto->marca}}" placeholder="Marca...">
             </div>
             
             <div class="form-group">
            <!-- <label for="categoria">Categoria a la que pertenece  :</label>-->
 
-			{!! Form::label('id_subcategoria', 'Seleccione una Subcategoria   :') !!}
+			{!! Form::label('nombre', 'Seleccione una Subcategoria   :') !!}
 		
 			{!! Form::select('subcategoria',$subcategoria,null,['class'=>'select2-container form-control select2','placeholder'=>'Seleccione Nombre de la subcategoria','required']) !!}
             </div>

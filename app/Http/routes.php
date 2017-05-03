@@ -23,7 +23,7 @@ Route::get('subcategoria.create','SubcategoriaController@create');
 Route::get('/home','HomeController@index');
 
 
-*/
+
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -36,5 +36,31 @@ Route::resource('subcategoria','SubcategoriaController');
 Route::resource('producto','ProductoController');
 
 Route::resource('imagen','ImagenController');
+*/
 
 
+
+//rutas accessibles slo si el usuario no se ha logueado
+Route::group(['middleware' => 'guest'], function () {
+
+	Route::get('login', 'Auth\AuthController@getLogin');
+	Route::post('login', ['as' =>'login', 'uses' => 'Auth\AuthController@postLogin']); 
+	// Registration routes...
+	Route::get('register', 'Auth\AuthController@getRegister');
+	Route::post('register', ['as' => 'auth/register', 'uses' => 'Auth\AuthController@postRegister']);
+});
+
+//rutas accessibles solo si el usuario esta autenticado y ha ingresado al sistema
+Route::group(['middleware' => 'auth'], function () {
+
+	Route::get('/', 'CategoriaController@index');
+	Route::get('home', 'CategoriaController@index'); 
+	Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+
+	Route::resource('categoria','CategoriaController');
+	Route::resource('subcategoria','SubcategoriaController');
+
+	Route::resource('producto','ProductoController');
+
+	Route::resource('imagen','ImagenController');
+});

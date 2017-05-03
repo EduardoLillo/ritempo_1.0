@@ -45,6 +45,7 @@ class SubcategoriaController extends Controller
         return view("subcategoria.create",$data);
         //return view('subcategoria.create',compact('categorias'));
     }
+    
     public function store (SubcategoriaFormRequest $request)
     {
         $subcategoria=new Subcategoria;

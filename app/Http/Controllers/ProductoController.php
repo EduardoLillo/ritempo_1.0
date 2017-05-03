@@ -77,10 +77,14 @@ class ProductoController extends Controller
         return Redirect::to('producto');
 
     }
-
-    public function show($id)
+/*-----------------------????????????------------------------------------------------------------*/
+    public function show($id)    
     {
-        return view("producto.show",["producto"=>Producto::findOrFail($id)]);
+
+     // $producto=Producto::findOrFail($id);
+       // return view("producto.show",["producto"=>Producto::findOrFail($id)]);
+       return view("producto.show",["producto"=>Producto::findOrFail($id)]);
+
     }
     public function edit($id)    
     {
@@ -92,7 +96,7 @@ class ProductoController extends Controller
     {
         $producto=Producto::findOrFail($id);
         $file = Input::file('imagen');
-        $producto = new Producto();
+        //$producto = new Producto();
         //$producto = new Producto($request->all());        
         $producto->nombre=$request->get('nombre');
         $producto->descripcion=$request->get('descripcion');
@@ -111,12 +115,13 @@ class ProductoController extends Controller
                   $filename = 'PRO_' . time() . '.' . $nombre_img;
                   //$filename = 'PRO_'. str_random(4) . '_' .$nombre_img;
                   $upload = $value->move($destinacion, $filename);
-                  $imagen=new Imagen();
-                  $imagen->nombre=$filename;
-                  $imagen->ruta=$ruta;
+                  $imagen1=new Imagen();
+                  $imagen1->nombre=$filename;
+                  $imagen1->ruta=$ruta;
                   
-                  $imagen->update();
-                  $producto->imagenes()->attach($imagen);
+                  $imagen1->save();
+
+                  $producto->imagenes()->attach($imagen1);
              }
 
         }
@@ -126,7 +131,8 @@ class ProductoController extends Controller
 
     }
 
-    
+    /*-----------------------????????????------------------------------------------------------------*/
+
 
     public function destroy($id)
     {
@@ -136,6 +142,8 @@ class ProductoController extends Controller
          // $producto->imagenes()->detach();
 
         /*$categoria->condicion='0';*/
+          //$imagenes=DB::table('imagenes')->where('nombre','LIKE','%'.$query.'%')
+
           $producto->imagenes()->detach();
           $producto->delete();
 

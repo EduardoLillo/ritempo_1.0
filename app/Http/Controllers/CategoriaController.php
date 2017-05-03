@@ -72,7 +72,7 @@ class CategoriaController extends Controller
             
             //return 'No puede eliminar la categoria,por que tiene subcategorias asociadas';
             return Redirect::to('categoria')
-        ->with('message','');
+        ->with('msj','noooooooooooooo');
             
         }
 

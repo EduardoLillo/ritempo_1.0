@@ -26,7 +26,10 @@
             <div class="form-group">
             	<label for="descripcion" class="col-sm-2 control-label">Descripción:</label>
             	<div class="col-sm-10">
-            	<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">
+                 
+      <textarea name="descripcion" class="form-control" maxlength="100" placeholder="Descripción..."></textarea>
+            	
+ <!--<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">-->
             	</div>
             </div>
             <br><hr>

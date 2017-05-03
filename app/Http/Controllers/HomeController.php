@@ -28,6 +28,6 @@ class HomeController extends Controller
     public function index(Requests $request)
     {
  
-       return view('home');
+       return view('categoria');
     }
 }

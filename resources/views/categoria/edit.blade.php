@@ -21,7 +21,8 @@
             </div>
            <div class="form-group">
             	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" placeholder="Descripción...">
+            	<textarea name="descripcion" class="form-control" maxlength="100" value="{{$categoria->descripcion}} placeholder="Descripción..."></textarea>
+            	<!--<input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" placeholder="Descripción...">-->
             </div>
             <div class="form-group">
             	<button class="btn btn-primary" type="submit">Guardar</button>
